@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IC Design Industry Salary &amp; Job Market Dashboard 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+    --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    --color-success-rgb: var(--color-teal-300-rgb);
+    --color-error-rgb: var(--color-red-400-rgb);
+    --color-warning-rgb: var(--color-orange-400-rgb);
+    --color-info-rgb: var(--color-gray-300-rgb);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+html {
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+        /* Custom Styles */
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-24);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-32);
+            padding: var(--space-32) var(--space-24);
+            background: var(--color-bg-1);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .header h1 {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-12);
+            color: var(--color-text);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .header p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+        }
+
+        .key-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-16);
+            margin-top: var(--space-24);
+        }
+
+        .metric-card {
+            background: var(--color-surface);
+            padding: var(--space-20);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .metric-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .metric-value {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            margin: 0;
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-16);
+            margin-bottom: var(--space-32);
+            padding: var(--space-24);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text);
+            margin-bottom: var(--space-8);
+        }
+
+        select {
+            padding: var(--space-10) var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background-color: var(--color-surface);
+            color: var(--color-text);
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+            cursor: pointer;
+            transition: border-color var(--duration-fast) var(--ease-standard);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: var(--select-caret-light);
+            background-repeat: no-repeat;
+            background-position: right var(--space-12) center;
+            background-size: 16px;
+            padding-right: var(--space-32);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            select {
+                background-image: var(--select-caret-dark);
+            }
+        }
+
+        select:focus {
+            outline: var(--focus-outline);
+            border-color: var(--color-primary);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: var(--space-24);
+            margin-bottom: var(--space-32);
+        }
+
+        .chart-container {
+            background: var(--color-surface);
+            padding: var(--space-24);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            margin-bottom: var(--space-20);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--space-16);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--color-card-border);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: var(--space-12) var(--space-16);
+            text-align: left;
+            border-bottom: 1px solid var(--color-card-border-inner);
+        }
+
+        .data-table th {
+            background: var(--color-bg-1);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            font-size: var(--font-size-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .data-table td {
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover {
+            background: var(--color-bg-2);
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-16);
+            margin-top: var(--space-32);
+        }
+
+        .insight-card {
+            background: var(--color-surface);
+            padding: var(--space-20);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .insight-card.success {
+            background: var(--color-bg-3);
+            border-color: rgba(var(--color-success-rgb), 0.3);
+        }
+
+        .insight-card.warning {
+            background: var(--color-bg-2);
+            border-color: rgba(var(--color-warning-rgb), 0.3);
+        }
+
+        .insight-card.info {
+            background: var(--color-bg-1);
+            border-color: rgba(var(--color-info-rgb), 0.3);
+        }
+
+        .insight-card.error {
+            background: var(--color-bg-4);
+            border-color: rgba(var(--color-error-rgb), 0.3);
+        }
+
+        .insight-title {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            margin-bottom: var(--space-8);
+        }
+
+        .insight-content {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-normal);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+            margin: var(--space-32) 0 var(--space-20) 0;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard {
+                padding: var(--space-16);
+            }
+
+            .header h1 {
+                font-size: var(--font-size-3xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>IC Design Industry Salary &amp; Job Market Dashboard 2025</h1>
+            <p>Global Market Analysis &amp; Career Insights</p>
+            
+            <div class="key-metrics">
+                <div class="metric-card">
+                    <div class="metric-label">Global IC Design Market</div>
+                    <div class="metric-value">$45.2B</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Market Growth (CAGR)</div>
+                    <div class="metric-value">5.5%</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Avg Salary Range (USA)</div>
+                    <div class="metric-value">$150K-400K</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters">
+            <div class="filter-group">
+                <label class="filter-label" for="regionFilter">Region</label>
+                <select id="regionFilter">
+                    <option value="all">All Regions</option>
+                    <option value="Taiwan">Taiwan</option>
+                    <option value="USA (Silicon Valley)">USA (Silicon Valley)</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="China">China</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label" for="experienceFilter">Experience Level</label>
+                <select id="experienceFilter">
+                    <option value="all">All Levels</option>
+                    <option value="entry">Entry-level</option>
+                    <option value="mid">Mid-level</option>
+                    <option value="senior">Senior</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label" for="categoryFilter">Job Category</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Digital RTL Design">Digital RTL Design</option>
+                    <option value="Verification Engineer">Verification Engineer</option>
+                    <option value="Physical Design">Physical Design</option>
+                    <option value="ASIC/Analog Design">ASIC/Analog Design</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">Salary Comparison by Region (USD)</h3>
+                <div class="chart-wrapper">
+                    <canvas id="salaryChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Job Market Demand by Specialization</h3>
+                <div class="chart-wrapper">
+                    <canvas id="demandChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container full-width">
+                <h3 class="chart-title">Career Progression &amp; Salary Growth</h3>
+                <div class="chart-wrapper">
+                    <canvas id="progressionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container full-width">
+                <h3 class="chart-title">Regional Market CAGR</h3>
+                <div class="chart-wrapper">
+                    <canvas id="cagrChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Tables Section -->
+        <h2 class="section-title">Salary Ranges by Job Title</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Entry-Level</th>
+                    <th>Mid-Level</th>
+                    <th>Senior</th>
+                    <th>Lead/Principal</th>
+                </tr>
+            </thead>
+            <tbody id="salaryTableBody">
+                <tr>
+                    <td>ASIC Design Engineer</td>
+                    <td>$70K - 90K</td>
+                    <td>$120K - 180K</td>
+                    <td>$180K - 280K</td>
+                    <td>$250K - 400K</td>
+                </tr>
+                <tr>
+                    <td>Digital RTL Designer</td>
+                    <td>$75K - 95K</td>
+                    <td>$130K - 190K</td>
+                    <td>$190K - 300K</td>
+                    <td>$280K - 450K</td>
+                </tr>
+                <tr>
+                    <td>Verification Engineer</td>
+                    <td>$80K - 100K</td>
+                    <td>$140K - 200K</td>
+                    <td>$200K - 320K</td>
+                    <td>$300K - 500K</td>
+                </tr>
+                <tr>
+                    <td>Physical Design Engineer</td>
+                    <td>$70K - 90K</td>
+                    <td>$125K - 185K</td>
+                    <td>$185K - 290K</td>
+                    <td>$270K - 420K</td>
+                </tr>
+                <tr>
+                    <td>Analog IC Designer</td>
+                    <td>$75K - 95K</td>
+                    <td>$135K - 195K</td>
+                    <td>$195K - 310K</td>
+                    <td>$290K - 480K</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Regional Market Metrics</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Talent Shortage</th>
+                    <th>CAGR</th>
+                    <th>Entry Salary (USD)</th>
+                    <th>Senior Salary (USD)</th>
+                </tr>
+            </thead>
+            <tbody id="marketTableBody">
+                <tr>
+                    <td>Taiwan</td>
+                    <td>High</td>
+                    <td>5.5%</td>
+                    <td>$50K</td>
+                    <td>$175K</td>
+                </tr>
+                <tr>
+                    <td>USA (Silicon Valley)</td>
+                    <td>Critical</td>
+                    <td>6.2%</td>
+                    <td>$157K</td>
+                    <td>$400K</td>
+                </tr>
+                <tr>
+                    <td>Singapore</td>
+                    <td>High</td>
+                    <td>5.8%</td>
+                    <td>$36K</td>
+                    <td>$105K</td>
+                </tr>
+                <tr>
+                    <td>China</td>
+                    <td>Critical</td>
+                    <td>7.2%</td>
+                    <td>$50K</td>
+                    <td>$450K</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Key Insights Section -->
+        <h2 class="section-title">Key Market Insights</h2>
+        <div class="insights-grid">
+            <div class="insight-card success">
+                <div class="insight-title">🚀 AI Boom</div>
+                <div class="insight-content">
+                    Market demand for AI chip designers is up 25-30% in 2025, driven by edge AI and autonomous systems.
+                </div>
+            </div>
+            <div class="insight-card error">
+                <div class="insight-title">⚠️ Talent Shortage</div>
+                <div class="insight-content">
+                    Global shortage of skilled IC designers is driving premium salaries, especially in verification and advanced nodes.
+                </div>
+            </div>
+            <div class="insight-card info">
+                <div class="insight-title">📈 Top Growth Areas</div>
+                <div class="insight-content">
+                    Edge AI, automotive ADAS, and IoT are creating new opportunities for IC designers with specialized skills.
+                </div>
+            </div>
+            <div class="insight-card warning">
+                <div class="insight-title">💰 Salary Gap</div>
+                <div class="insight-content">
+                    USA salaries are 3-4x higher than Taiwan for similar roles, reflecting market maturity and cost of living.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const regionsData = [
+            {
+                name: 'Taiwan',
+                entry_level_usd: 50000,
+                midlevel_usd: 80000,
+                senior_usd: 175000,
+                market_cagr: 5.5,
+                talent_shortage: 'High'
+            },
+            {
+                name: 'USA (Silicon Valley)',
+                entry_level_usd: 157000,
+                midlevel_usd: 235000,
+                senior_usd: 400000,
+                market_cagr: 6.2,
+                talent_shortage: 'Critical'
+            },
+            {
+                name: 'Singapore',
+                entry_level_usd: 36000,
+                midlevel_usd: 71000,
+                senior_usd: 105000,
+                market_cagr: 5.8,
+                talent_shortage: 'High'
+            },
+            {
+                name: 'China',
+                entry_level_usd: 50000,
+                midlevel_usd: 140000,
+                senior_usd: 450000,
+                market_cagr: 7.2,
+                talent_shortage: 'Critical'
+            }
+        ];
+
+        const jobSpecializations = [
+            { title: 'Digital RTL Design', percentage: 35, demand: 'Very High' },
+            { title: 'Verification Engineer', percentage: 30, demand: 'Very High' },
+            { title: 'Physical Design', percentage: 20, demand: 'High' },
+            { title: 'ASIC/Analog Design', percentage: 15, demand: 'High' }
+        ];
+
+        const careerProgression = [
+            { years: '0-2', level: 'Junior', taiwan_avg: 48000, usa_avg: 80000, singapore_avg: 27000, china_avg: 40000 },
+            { years: '3-5', level: 'Mid-Level', taiwan_avg: 80000, usa_avg: 150000, singapore_avg: 71000, china_avg: 95000 },
+            { years: '5-8', level: 'Senior', taiwan_avg: 130000, usa_avg: 230000, singapore_avg: 95000, china_avg: 180000 },
+            { years: '8-12', level: 'Lead', taiwan_avg: 165000, usa_avg: 325000, singapore_avg: 115000, china_avg: 320000 },
+            { years: '12+', level: 'Principal', taiwan_avg: 200000, usa_avg: 525000, singapore_avg: 140000, china_avg: 525000 }
+        ];
+
+        // Chart colors
+        const chartColors = ['#1FB8CD', '#FFC185', '#B4413C', '#ECEBD5', '#5D878F', '#DB4545', '#D2BA4C', '#964325', '#944454', '#13343B'];
+
+        // Initialize charts
+        let salaryChart, demandChart, progressionChart, cagrChart;
+
+        function initCharts() {
+            // Salary Comparison Chart
+            const salaryCtx = document.getElementById('salaryChart').getContext('2d');
+            salaryChart = new Chart(salaryCtx, {
+                type: 'bar',
+                data: {
+                    labels: regionsData.map(r => r.name),
+                    datasets: [
+                        {
+                            label: 'Entry-Level',
+                            data: regionsData.map(r => r.entry_level_usd / 1000),
+                            backgroundColor: chartColors[0],
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Mid-Level',
+                            data: regionsData.map(r => r.midlevel_usd / 1000),
+                            backgroundColor: chartColors[1],
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Senior',
+                            data: regionsData.map(r => r.senior_usd / 1000),
+                            backgroundColor: chartColors[2],
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { family: 'FKGroteskNeue, Inter, sans-serif', size: 12 },
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + context.parsed.x + 'K';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'K';
+                                },
+                                font: { family: 'FKGroteskNeue, Inter, sans-serif' }
+                            },
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' }
+                        },
+                        y: {
+                            ticks: { font: { family: 'FKGroteskNeue, Inter, sans-serif' } },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // Job Market Demand Chart
+            const demandCtx = document.getElementById('demandChart').getContext('2d');
+            demandChart = new Chart(demandCtx, {
+                type: 'pie',
+                data: {
+                    labels: jobSpecializations.map(j => j.title),
+                    datasets: [{
+                        data: jobSpecializations.map(j => j.percentage),
+                        backgroundColor: [chartColors[0], chartColors[1], chartColors[2], chartColors[3]],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: 'FKGroteskNeue, Inter, sans-serif', size: 12 },
+                                padding: 12
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Career Progression Chart
+            const progressionCtx = document.getElementById('progressionChart').getContext('2d');
+            progressionChart = new Chart(progressionCtx, {
+                type: 'line',
+                data: {
+                    labels: careerProgression.map(c => c.years + ' yrs'),
+                    datasets: [
+                        {
+                            label: 'USA',
+                            data: careerProgression.map(c => c.usa_avg / 1000),
+                            borderColor: chartColors[0],
+                            backgroundColor: chartColors[0] + '20',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 3
+                        },
+                        {
+                            label: 'China',
+                            data: careerProgression.map(c => c.china_avg / 1000),
+                            borderColor: chartColors[1],
+                            backgroundColor: chartColors[1] + '20',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 3
+                        },
+                        {
+                            label: 'Taiwan',
+                            data: careerProgression.map(c => c.taiwan_avg / 1000),
+                            borderColor: chartColors[2],
+                            backgroundColor: chartColors[2] + '20',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 3
+                        },
+                        {
+                            label: 'Singapore',
+                            data: careerProgression.map(c => c.singapore_avg / 1000),
+                            borderColor: chartColors[4],
+                            backgroundColor: chartColors[4] + '20',
+                            tension: 0.4,
+                            fill: true,
+                            borderWidth: 3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { family: 'FKGroteskNeue, Inter, sans-serif', size: 12 },
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + context.parsed.y + 'K';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'K';
+                                },
+                                font: { family: 'FKGroteskNeue, Inter, sans-serif' }
+                            },
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' }
+                        },
+                        x: {
+                            ticks: { font: { family: 'FKGroteskNeue, Inter, sans-serif' } },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            // CAGR Chart
+            const cagrCtx = document.getElementById('cagrChart').getContext('2d');
+            cagrChart = new Chart(cagrCtx, {
+                type: 'bar',
+                data: {
+                    labels: regionsData.map(r => r.name),
+                    datasets: [{
+                        label: 'Market CAGR (%)',
+                        data: regionsData.map(r => r.market_cagr),
+                        backgroundColor: chartColors[0],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'CAGR: ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                font: { family: 'FKGroteskNeue, Inter, sans-serif' }
+                            },
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' }
+                        },
+                        x: {
+                            ticks: { font: { family: 'FKGroteskNeue, Inter, sans-serif' } },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Filter functionality
+        function updateCharts() {
+            const regionFilter = document.getElementById('regionFilter').value;
+            const experienceFilter = document.getElementById('experienceFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+
+            // Filter regions data
+            let filteredRegions = regionsData;
+            if (regionFilter !== 'all') {
+                filteredRegions = regionsData.filter(r => r.name === regionFilter);
+            }
+
+            // Update salary chart
+            salaryChart.data.labels = filteredRegions.map(r => r.name);
+            
+            let datasets = [];
+            if (experienceFilter === 'all' || experienceFilter === 'entry') {
+                datasets.push({
+                    label: 'Entry-Level',
+                    data: filteredRegions.map(r => r.entry_level_usd / 1000),
+                    backgroundColor: chartColors[0],
+                    borderRadius: 6
+                });
+            }
+            if (experienceFilter === 'all' || experienceFilter === 'mid') {
+                datasets.push({
+                    label: 'Mid-Level',
+                    data: filteredRegions.map(r => r.midlevel_usd / 1000),
+                    backgroundColor: chartColors[1],
+                    borderRadius: 6
+                });
+            }
+            if (experienceFilter === 'all' || experienceFilter === 'senior') {
+                datasets.push({
+                    label: 'Senior',
+                    data: filteredRegions.map(r => r.senior_usd / 1000),
+                    backgroundColor: chartColors[2],
+                    borderRadius: 6
+                });
+            }
+            
+            salaryChart.data.datasets = datasets;
+            salaryChart.update();
+
+            // Update demand chart
+            let filteredJobs = jobSpecializations;
+            if (categoryFilter !== 'all') {
+                filteredJobs = jobSpecializations.filter(j => j.title === categoryFilter);
+            }
+            
+            demandChart.data.labels = filteredJobs.map(j => j.title);
+            demandChart.data.datasets[0].data = filteredJobs.map(j => j.percentage);
+            demandChart.update();
+
+            // Update progression chart based on region filter
+            let datasets2 = [];
+            if (regionFilter === 'all' || regionFilter === 'USA (Silicon Valley)') {
+                datasets2.push({
+                    label: 'USA',
+                    data: careerProgression.map(c => c.usa_avg / 1000),
+                    borderColor: chartColors[0],
+                    backgroundColor: chartColors[0] + '20',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                });
+            }
+            if (regionFilter === 'all' || regionFilter === 'China') {
+                datasets2.push({
+                    label: 'China',
+                    data: careerProgression.map(c => c.china_avg / 1000),
+                    borderColor: chartColors[1],
+                    backgroundColor: chartColors[1] + '20',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                });
+            }
+            if (regionFilter === 'all' || regionFilter === 'Taiwan') {
+                datasets2.push({
+                    label: 'Taiwan',
+                    data: careerProgression.map(c => c.taiwan_avg / 1000),
+                    borderColor: chartColors[2],
+                    backgroundColor: chartColors[2] + '20',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                });
+            }
+            if (regionFilter === 'all' || regionFilter === 'Singapore') {
+                datasets2.push({
+                    label: 'Singapore',
+                    data: careerProgression.map(c => c.singapore_avg / 1000),
+                    borderColor: chartColors[4],
+                    backgroundColor: chartColors[4] + '20',
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                });
+            }
+            
+            progressionChart.data.datasets = datasets2;
+            progressionChart.update();
+
+            // Update CAGR chart
+            cagrChart.data.labels = filteredRegions.map(r => r.name);
+            cagrChart.data.datasets[0].data = filteredRegions.map(r => r.market_cagr);
+            cagrChart.update();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            
+            // Add event listeners to filters
+            document.getElementById('regionFilter').addEventListener('change', updateCharts);
+            document.getElementById('experienceFilter').addEventListener('change', updateCharts);
+            document.getElementById('categoryFilter').addEventListener('change', updateCharts);
+        });
+    </script>
+</body>
+</html>
